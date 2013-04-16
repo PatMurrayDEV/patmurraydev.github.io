@@ -10,10 +10,6 @@
 
 
 <SCRIPT LANGUAGE="JavaScript1.2"> <!--
-
-function enter() {
-return !(window.event && window.event.keyCode == 13); }
-
 function myAgeValidation() {
 
     var lre = /^\s*/;
@@ -157,8 +153,8 @@ h2 {
 <div class="block">
 <a href="../"><img align="left" src="flag.png" width="16" height="11" /></a>
 
-<form name="ageform">
-Enter Birth Date to access site:  <input type="text" name="myDate" size=10 maxlength=10 onkeypress="return enter()">
+<form name="ageform" action="Javascript:myAgeValidation()">
+Enter Birth Date to access site:  <input type="text" name="myDate" size=10 maxlength=10>
 <input type="submit" value="Go" onclick="Javascript:myAgeValidation()">
 <br>(MM/DD/YYYY)
 </form>
