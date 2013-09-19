@@ -2,220 +2,111 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>NÆRBØ VODKA</title>
-
-<link rel="stylesheet" href="proto-compiled.css">
-
-<link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
-
-<SCRIPT LANGUAGE="JavaScript1.2"> <!--
-
-function myAgeValidation() {
-
-    var lre = /^\s*/;
-    var datemsg = "";
-
-    var inputDate = document.ageform.myDate.value;
-    inputDate = inputDate.replace(lre, "");
-    document.ageform.myDate.value = inputDate;
-    datemsg = isValidDate(inputDate);
-        if (datemsg != "") {
-            alert(datemsg);
-            return;
-        }
-        else {
-            //Now find the Age based on the Birth Date
-            getAge(new Date(inputDate));
-        }
-
-}
-
-function getAge(birth) {
-
-    var today = new Date();
-    var nowyear = today.getFullYear();
-    var nowmonth = today.getMonth();
-    var nowday = today.getDate();
-
-    var birthyear = birth.getFullYear();
-    var birthmonth = birth.getMonth();
-    var birthday = birth.getDate();
-
-    var age = nowyear - birthyear;
-    var age_month = nowmonth - birthmonth;
-    var age_day = nowday - birthday;
-
-    if(age_month < 0 || (age_month == 0 && age_day <0)) {
-            age = parseInt(age) -1;
-        }
-
-
-    if ((age == 18 && age_month <= 0 && age_day <=0) || age < 18) {
-    document.getElementById('contentdiv').style.display = "none";
-    alert("Beklager du er " + age + ". Du må være over 18 for å gå inn dette nettstede.");
-    }
-    else {
-        document.getElementById('contentdiv').style.display = "block";
-    }
-
-}
-
-function isValidDate(dateStr) {
-
-
-    var msg = "";
-    // Checks for the following valid date formats:
-    // MM/DD/YY   MM/DD/YYYY   MM-DD-YY   MM-DD-YYYY
-    // Also separates date into month, day, and year variables
-
-    // To require a 2 & 4 digit year entry, use this line instead:
-    //var datePat = /^(\d{1,2})(\/|-)(\d{1,2})\2(\d{2}|\d{4})$/;
-    // To require a 4 digit year entry, use this line instead:
-    var datePat = /^(\d{1,2})(\/|-)(\d{1,2})\2(\d{4})$/;
-
-    var matchArray = dateStr.match(datePat); // is the format ok?
-    if (matchArray == null) {
-        msg = "Date is not in a valid format.";
-        return msg;
-    }
-
-    month = matchArray[1]; // parse date into variables
-    day = matchArray[3];
-    year = matchArray[4];
-
-
-    if (month < 1 || month > 12) { // check month range
-        msg = "Month must be between 1 and 12.";
-        return msg;
-    }
-
-    if (day < 1 || day > 31) {
-        msg = "Day must be between 1 and 31.";
-        return msg;
-    }
-
-    if ((month==4 || month==6 || month==9 || month==11) && day==31) {
-        msg = "Month "+month+" doesn't have 31 days!";
-        return msg;
-    }
-
-    if (month == 2) { // check for february 29th
-    var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
-    if (day>29 || (day==29 && !isleap)) {
-        msg = "February " + year + " doesn't have " + day + " days!";
-        return msg;
-    }
-    }
-
-    if (day.charAt(0) == '0') day= day.charAt(1);
-
-    //Incase you need the value in CCYYMMDD format in your server program
-    //msg = (parseInt(year,10) * 10000) + (parseInt(month,10) * 100) + parseInt(day,10);
-
-    return msg;  // date is valid
-}
-
-// --> </SCRIPT>
+<title>fifteen15</title>
+<link rel="stylesheet" type="text/css" href="assets/webfonts/ostrich-sans.css">
 
 
 
 <style type="text/css">
+
+html {
+  background: url(Backgrounds/bg13.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
-	font-family: Questrial;
-	text-align: center;
+
+	overflow-y:scroll;
+	font-family:  Helvetica,Arial;
+	color:white;
+
 }
+
 h1 {
-	font-weight: normal;
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 100px;
-	color:#333;
-	padding: 0px;
-	margin: 30px;
+text-align:center;
+font-family:'Ostrich Sans';
+font-weight: 400;
+font-size:500%;
+margin:25px;
 }
-.images {
-	text-align: center;
+
+
+.content {
+	text-align:left;
+	background-color: rgba(1, 1, 1, 0.5);
+	padding:30px;
+	width:70%;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
-h2 {
-	font-weight: normal;
-	color: #333;
+
+.wrapper {
+
+padding-bottom: 10px;
+margin-top:150px;
+
 }
-.block .center table {
-	text-align: left;
+
+.base {
+position: relative;
+bottom: 25px;
+margin-top:150px
+
 }
-.imagetable {
-	text-align: right;
+.logo {
+margin-bottom:150px
 }
-.footer {
-	font-size: x-small;
-</style></head>
+
+.credits {
+font-family:'Ostrich Sans';
+font-weight: 400;
+font-size:100%;
+color:grey;
+}
+
+</style>
+
+
+</head>
+
 <body>
-<div class="block">
-<a href="/en"><img align="left" src="flag.png" width="16" height="11" /></a>
+	<center>
 
-<form name="ageform" action="Javascript:myAgeValidation()">
-Skriv inn fødselsdato for å få tilgang nettstedet:  <input type="text" name="myDate" size=10 maxlength=10 placeholder="MM/DD/YYYY">
-<input type="button" value="Go" onclick="Javascript:myAgeValidation()">
-</form>
+		<div class="wrapper">
+<img class="logo" src="assets/images/fifteen15_03.png" alt="Fifteen15 logo" height="170">
 
-<div class="center">
-<h1 class="label">NÆRBØ	</h1>
-  </div>
+<div class="content"><H1>Coming Soon</h1>
 
-  <div class="center" style="display:none;" id="contentdiv">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget sem et erat fermentum aliquam. Donec at lacinia felis, id rutrum lorem. Donec ac lectus justo. Quisque ut ornare est. Sed eget lacus laoreet, consequat dolor vitae, consectetur orci. Vestibulum mi sem, viverra et metus nec, laoreet pharetra odio. Ut et sagittis nibh, ut blandit est. Morbi cursus, dolor in mattis malesuada, ipsum eros dapibus lectus, non tristique mauris enim auctor sem. Donec feugiat porttitor egestas. Curabitur ut lacinia sem, in congue nunc. Proin in dolor ante. Integer dignissim nisl sit amet erat ornare, at facilisis purus porta.</p>
 
+<p>Maecenas feugiat id est nec aliquet. Phasellus ligula justo, tincidunt sed odio at, fringilla fringilla dolor. Nullam ut lorem tellus. Nulla facilisi. Etiam a massa ligula. Vestibulum pulvinar, urna id lacinia elementum, lorem felis pharetra lacus, in rutrum ante orci non magna. Integer lacus ligula, consequat eleifend tortor ac, viverra congue diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed euismod felis vel nisi luctus, in fringilla enim convallis. Quisque faucibus consequat justo, a cursus dolor faucibus vel. Suspendisse ullamcorper purus vitae sem rutrum varius.</p>
 
-  <p style="color: #333;">Ludvik Bergström og Kåre Seljelid grunnlagt NÆRBØ Vodka i 2002. Deres signatur trippel destillasjon og filtrering behandling skaper ren, jevn vodka passer til alle anledninger. Hundrevis av essensen prosesser ble testet før, den perfekte kombinasjonen av bitter til søt ble funnet, opprette en full smakstilsatt utvalg av vodka.</p>
+<p>Fusce mattis massa ac mi condimentum venenatis. In luctus cursus augue lobortis tincidunt. Etiam euismod placerat consequat. Etiam eget quam sapien. Vestibulum pellentesque nibh eu magna adipiscing, non rhoncus lorem porta. Ut vitae orci convallis, malesuada nisl ut, bibendum risus. Ut ultrices tortor a bibendum lacinia.</p>
 
+<p>Phasellus consectetur vulputate mi. Curabitur bibendum tortor id leo luctus eleifend. Duis ac sapien augue. Praesent mattis vestibulum libero at tincidunt. Cras et lacinia nibh, eget placerat quam. Suspendisse potenti. Proin placerat nunc at mauris tempus blandit. Vivamus luctus rutrum tortor, sed venenatis arcu facilisis id.</p>
 
-<img src="top.jpg" width="70%" height="70%" style="margin-top:0px;padding-bottom:100px;"/>
+<p>Aenean dictum, eros ac viverra eleifend, sem sapien ullamcorper lacus, eget tempor velit elit in magna. Pellentesque quis tristique mi. Mauris mollis facilisis accumsan. Sed tincidunt ipsum non nunc sollicitudin, sodales rutrum augue aliquet. Sed rutrum, turpis a lobortis congue, augue leo vulputate eros, vulputate cursus nulla nunc id sapien. Integer imperdiet nisl massa, sit amet placerat felis sagittis non. Aliquam porttitor porta ligula, eget commodo lacus posuere id. Cras scelerisque enim at mollis hendrerit.</p>
 
 
-
-<hr>
-<h2 class="label">Vårt Utvalg</h2>
-
-<table width="90%" border="0" cellspacing="10">
-<tr>
-    <td width="35%" class="imagetable"><img src="white_on_the_rocks.jpg" width="147" height="147" />
-    </td>
-    <td width="65%"><h2>Renhet</h2>
-      <p>Nærbø sin første Vodka, omfavner filosofien til en ren og enkel vodka. Denne rene smaker, bringer fyldig ånd eleganse til enhver festlighet.</p></td>
-  </tr>
-</table>
+<center>
+<a href="https://twitter.com/_patmurray" class="twitter-follow-button" data-show-count="false" data-size="large" data-dnt="true">Follow @_patmurray</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</center>
 
 
+</content>
 
-  <table width="90%" border="0" cellspacing="10">
-    <tr>
-    <td width="30%" class="imagetable"><img src="black.jpg" width="100" height="100"/>
-    </td>
-    <td width="70%"><h2>Død</h2>
-      <p>Død appellerer til faren i folk. Den fristende svart væske skiller de drikker fra posers, med 60% alkohol konsentrasjon, noe som gjør det en på det sterkeste prosentvise vodka på markedet.</p></td>
-  </tr>
-  <tr>
-    <td class="imagetable"><img src="blue.jpg" width="100" height="100" /> </td>
-    <td><h2>Seriøsitet</h2>
-      <p>Seriøsitet er en hybrid blanding av friske Jørgen Blåbær og sitron Bon Bons. Opprette en søt, litt syrlig blanding av bær sitron, appellerer til den søte og syrlige i oss alle.</p></td>
-  </tr>
-  <tr>
-    <td class="imagetable"><img src="red.jpg" width="100" height="100" /></td>
-    <td><h2>Sinne</h2>
-      <p>Sinne er smaken kommer fra vill Molter (multer), som er hentet fra skogen i Sør-Norge. Den fem dager lange Molter soaking produserer en litt søt smaker vodka klar til å gi slipp på sinne i deg.</p></td>
-  </tr>
-  <tr>
-    <td class="imagetable"><img src="green.jpg" width="100" height="100" /></td>
-    <td><h2>Misunne</h2>
-      <p>Misunner inkorporerer den akutte bitterhet av kalk, med skarpheten av vodka å opprette og berusende lime infusjon. Envy er gjort gjennom infusjonen kalk zests med vodka i løpet av destillasjon og indiske Kaffir lime blader under filtrering for å skape et sjarmerende tang til hver drink.</p></td>
-  </tr>
 
-</table>
-  <p><img src="header.jpg" width="70%"  /></p>
+		</div>  <img class="base" src="assets/images/fifteen15_07.png" alt="Fifteen15 logo" height="100">
 
-  <div class="footer"><span class="footer"></span>
-  <p>2002-2013 DEN NÆRBØ COMPANY, RESERVERT ALLE RETTIGHETER. NYTE ANSVARLIG</p>
-  </div>
-  </div>
-</div>
+		<div class="credits">
+		Copyright 2013 Patrick Murray. All rights reserved. <br>
+		<a href="http://thenounproject.com/noun/sunglasses/#icon-No8272" target="_blank">Sunglasses</a> designed by <a href="http://thenounproject.com/VidalPedro" target="_blank">Pedro Vidal</a> from The Noun Project
+		</div>
+
+		</center>
 </body>
 </html>
